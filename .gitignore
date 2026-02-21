@@ -1,0 +1,28 @@
+# Ansible temporals
+.ansible/tmp/
+
+# Fitxers de configuració locals
+config.yml
+*.retry
+
+# MacOS hidden files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Logs
+*.log
+
+# Entorns virtuals si n’hi ha
+venv/
+.env/
+
+# Sublime Text project files (opcional)
+*.sublime-workspace
+*.sublime-project
