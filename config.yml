@@ -1,0 +1,20 @@
+brew_packages:
+  - git
+  - wget
+  - htop
+  - speedtest-cli
+  - swaks
+  - iperf3
+
+brew_casks:
+  - google-chrome
+  - visual-studio-code
+  - iterm2
+  - maccy
+  - caffeine
+  - stats
+  - keka
+  - shottr
+  - numi
+  - pingmenu
+  - tunnelblick

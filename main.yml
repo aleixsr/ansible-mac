@@ -1,0 +1,38 @@
+---
+- name: Install Homebrew packages on macOS
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - config.yml
+
+  tasks:
+
+    # - name: Install casks debug
+    #   command: brew install --cask {{ item }}
+    #   loop: "{{ brew_casks }}"
+  
+    - name: Install brew packages
+      homebrew:
+        name: "{{ brew_packages }}"
+        state: present
+
+    - name: Install brew cask applications
+      homebrew_cask:
+        name: "{{ brew_casks }}"
+        state: present
+
+    - name: Disable .DS_Store on USB drives
+      community.general.osx_defaults:
+        domain: com.apple.desktopservices
+        key: DSDontWriteUSBStores
+        type: bool
+        value: true
+
+    - name: Disable .DS_Store on network drives
+      community.general.osx_defaults:
+        domain: com.apple.desktopservices
+        key: DSDontWriteNetworkStores
+        type: bool
+        value: true
