@@ -9,19 +9,117 @@
 
   tasks:
 
-    # - name: Install casks debug
-    #   command: brew install --cask {{ item }}
-    #   loop: "{{ brew_casks }}"
-  
-    - name: Install brew packages
-      homebrew:
-        name: "{{ brew_packages }}"
-        state: present
+    # ── Brew Packages ──────────────────────────────────
 
-    - name: Install brew cask applications
-      homebrew_cask:
-        name: "{{ brew_casks }}"
+    - name: Install packages - Development
+      homebrew:
+        name: "{{ packages_development }}"
         state: present
+      tags: [packages, development]
+
+    - name: Install packages - Cloud & DevOps
+      homebrew:
+        name: "{{ packages_cloud_devops }}"
+        state: present
+      tags: [packages, cloud_devops]
+
+    - name: Install packages - Networking
+      homebrew:
+        name: "{{ packages_networking }}"
+        state: present
+      tags: [packages, networking]
+
+    - name: Install packages - System & Utilities
+      homebrew:
+        name: "{{ packages_system_utilities }}"
+        state: present
+      tags: [packages, system_utilities]
+
+    - name: Install packages - Terminal & Shell
+      homebrew:
+        name: "{{ packages_terminal_shell }}"
+        state: present
+      tags: [packages, terminal_shell]
+
+    # ── Brew Casks ─────────────────────────────────────
+
+    - name: Install casks - Browsers
+      homebrew_cask:
+        name: "{{ casks_browsers }}"
+        state: present
+      tags: [casks, browsers]
+
+    - name: Install casks - Development
+      homebrew_cask:
+        name: "{{ casks_development }}"
+        state: present
+      tags: [casks, development]
+
+    - name: Install casks - Terminal
+      homebrew_cask:
+        name: "{{ casks_terminal }}"
+        state: present
+      tags: [casks, terminal]
+
+    - name: Install casks - Communication
+      homebrew_cask:
+        name: "{{ casks_communication }}"
+        state: present
+      tags: [casks, communication]
+
+    - name: Install casks - Productivity
+      homebrew_cask:
+        name: "{{ casks_productivity }}"
+        state: present
+      tags: [casks, productivity]
+
+    - name: Install casks - Networking & VPN
+      homebrew_cask:
+        name: "{{ casks_networking_vpn }}"
+        state: present
+      tags: [casks, networking_vpn]
+
+    - name: Install casks - Remote Access
+      homebrew_cask:
+        name: "{{ casks_remote_access }}"
+        state: present
+      tags: [casks, remote_access]
+
+    - name: Install casks - File Management & Cloud Storage
+      homebrew_cask:
+        name: "{{ casks_file_management_cloud }}"
+        state: present
+      tags: [casks, file_management_cloud]
+
+    - name: Install casks - System Utilities
+      homebrew_cask:
+        name: "{{ casks_system_utilities }}"
+        state: present
+      tags: [casks, system_utilities]
+
+    - name: Install casks - Microsoft Suite
+      homebrew_cask:
+        name: "{{ casks_microsoft_suite }}"
+        state: present
+      tags: [casks, microsoft_suite]
+
+    - name: Install casks - Media
+      homebrew_cask:
+        name: "{{ casks_media }}"
+        state: present
+      tags: [casks, media]
+
+    - name: Install casks - Documents
+      homebrew_cask:
+        name: "{{ casks_documents }}"
+        state: present
+      tags: [casks, documents]
+
+    - name: Install casks - Hardware
+      homebrew_cask:
+        name: "{{ casks_hardware }}"
+        state: present
+      tags: [casks, hardware]
 
     - name: Disable .DS_Store on USB drives
       community.general.osx_defaults:

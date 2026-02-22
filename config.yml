@@ -1,11 +1,14 @@
-brew_packages:
-  # Development
+# ── Brew Packages ──────────────────────────────────────
+
+packages_development:
   - gh
   - git
-  # Cloud & DevOps
+
+packages_cloud_devops:
   - azure-cli
   - oci-cli
-  # Networking
+
+packages_networking:
   - iperf3
   - rustscan
   - mtr
@@ -14,41 +17,47 @@ brew_packages:
   - swaks
   - tcping
   - wget
-  # System & Utilities
-  - betterdisplaycli
+
+packages_system_utilities:
   - htop
   - mas
-  # Terminal & Shell
+
+packages_terminal_shell:
   - powerlevel10k
   - zsh
   - zsh-autosuggestions
   - zsh-syntax-highlighting
 
-brew_casks:
-  # Browsers
+# ── Brew Casks ─────────────────────────────────────────
+
+casks_browsers:
   - brave-browser
   - chromium
   - google-chrome
   - microsoft-edge
-  # Development
+
+casks_development:
   - apache-directory-studio
   - copilot-cli
   - drawio
   - github
   - soapui
   - visual-studio-code
-  # Terminal
+
+casks_terminal:
   - iterm2
   - powershell
   - tabby
   - warp
-  # Communication
+
+casks_communication:
   - mailspring
   - microsoft-teams
   - telegram
   - whatsapp
   - zoho-mail
-  # Productivity
+
+casks_productivity:
   - alt-tab
   - caffeine
   - keka
@@ -57,22 +66,26 @@ brew_casks:
   - rectangle
   - shottr
   - stats
-  # Networking & VPN
+
+casks_networking_vpn:
   - inssider
   - pingmenu
   - switchhosts
   - tailscale-app
   - tunnelblick
-  # Remote Access
+
+casks_remote_access:
   - royal-tsx
   - rustdesk
   - windows-app
-  # File Management & Cloud Storage
+
+casks_file_management_cloud:
   - box-drive
   - localsend
-  - neardrop
+#  - neardrop
   - synology-drive
-  # System Utilities
+
+casks_system_utilities:
   - balenaetcher
   - betterdisplay
   - disk-inventory-x
@@ -82,20 +95,23 @@ brew_casks:
   - resolutionator
   - wins
   - xca
-  # Microsoft Suite
+
+casks_microsoft_suite:
   - microsoft-auto-update
   - microsoft-azure-storage-explorer
   - microsoft-office
-  # Media
+
+casks_media:
   - vlc
-  # Documents
+
+casks_documents:
   - adobe-acrobat-reader
   - macdown
   - mark-text
   - modern-csv
   - xournal++
-  # Hardware
+
+casks_hardware:
   - hackintool
   - logi-options+
-
 
