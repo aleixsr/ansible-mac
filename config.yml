@@ -1,20 +1,101 @@
 brew_packages:
+  # Development
+  - gh
   - git
-  - wget
-  - htop
+  # Cloud & DevOps
+  - azure-cli
+  - oci-cli
+  # Networking
+  - iperf3
+  - rustscan
+  - mtr
+  - nmap
   - speedtest-cli
   - swaks
-  - iperf3
+  - tcping
+  - wget
+  # System & Utilities
+  - betterdisplaycli
+  - htop
+  - mas
+  # Terminal & Shell
+  - powerlevel10k
+  - zsh
+  - zsh-autosuggestions
+  - zsh-syntax-highlighting
 
 brew_casks:
+  # Browsers
+  - brave-browser
+  - chromium
   - google-chrome
+  - microsoft-edge
+  # Development
+  - apache-directory-studio
+  - copilot-cli
+  - drawio
+  - github
+  - soapui
   - visual-studio-code
+  # Terminal
   - iterm2
-  - maccy
+  - powershell
+  - tabby
+  - warp
+  # Communication
+  - mailspring
+  - microsoft-teams
+  - telegram
+  - whatsapp
+  - zoho-mail
+  # Productivity
+  - alt-tab
   - caffeine
-  - stats
   - keka
-  - shottr
+  - maccy
   - numi
+  - rectangle
+  - shottr
+  - stats
+  # Networking & VPN
+  - inssider
   - pingmenu
+  - switchhosts
+  - tailscale-app
   - tunnelblick
+  # Remote Access
+  - royal-tsx
+  - rustdesk
+  - windows-app
+  # File Management & Cloud Storage
+  - box-drive
+  - localsend
+  - neardrop
+  - synology-drive
+  # System Utilities
+  - balenaetcher
+  - betterdisplay
+  - disk-inventory-x
+  - karabiner-elements
+  - macfuse
+  - novabench
+  - resolutionator
+  - wins
+  - xca
+  # Microsoft Suite
+  - microsoft-auto-update
+  - microsoft-azure-storage-explorer
+  - microsoft-office
+  # Media
+  - vlc
+  # Documents
+  - adobe-acrobat-reader
+  - macdown
+  - mark-text
+  - modern-csv
+  - xournal++
+  # Hardware
+  - hackintool
+  - logi-options+
+
+
