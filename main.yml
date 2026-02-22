@@ -121,6 +121,24 @@
         state: present
       tags: [casks, hardware]
 
+    # ── Karabiner Configuration ───────────────────────
+
+    - name: Ensure Karabiner complex modifications directory exists
+      file:
+        path: ~/.config/karabiner/assets/complex_modifications
+        state: directory
+        mode: '0755'
+      tags: [karabiner]
+
+    - name: Copy Karabiner F5 reload complex modification
+      copy:
+        src: files/karabiner/f5_reload.json
+        dest: ~/.config/karabiner/assets/complex_modifications/f5_reload.json
+        mode: '0644'
+      tags: [karabiner]
+
+    # ── macOS Defaults ─────────────────────────────────
+
     - name: Disable .DS_Store on USB drives
       community.general.osx_defaults:
         domain: com.apple.desktopservices

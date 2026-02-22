@@ -1,0 +1,21 @@
+{
+  "title": "F5 to Cmd+R",
+  "rules": [
+    {
+      "description": "Map F5 to Cmd+R",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": { "key_code": "f5" },
+          "to": [
+            {
+              "key_code": "r",
+              "modifiers": ["left_command"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
