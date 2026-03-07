@@ -1,42 +1,36 @@
-# ── Brew Packages ──────────────────────────────────────
-
-packages_development:
+# Configuració centralitzada
+packagesdevelopment:
   - gh
   - git
 
-packages_cloud_devops:
+packagesclouddevops:
   - azure-cli
   - oci-cli
 
-packages_networking:
+packagesnetworking:
   - iperf3
   - rustscan
   - mtr
   - nmap
-  - speedtest-cli
+  # speedtest-cli → teamookla/speedtest
+  - teamookla/speedtest
   - swaks
   - tcping
   - wget
 
-packages_system_utilities:
+packagessystemutilities:
   - htop
   - mas
 
-packages_terminal_shell:
-  - powerlevel10k
-  - zsh
-  - zsh-autosuggestions
-  - zsh-syntax-highlighting
+# ELIMINAT: packagesterminalshell (ara va al role shell)
 
-# ── Brew Casks ─────────────────────────────────────────
-
-casks_browsers:
+casksbrowsers:
   - brave-browser
   - chromium
   - google-chrome
   - microsoft-edge
 
-casks_development:
+casksdevelopment:
   - apache-directory-studio
   - copilot-cli
   - drawio
@@ -44,20 +38,20 @@ casks_development:
   - soapui
   - visual-studio-code
 
-casks_terminal:
+casksterminal:
   - iterm2
   - powershell
   - tabby
   - warp
 
-casks_communication:
+caskscommunication:
   - mailspring
   - microsoft-teams
   - telegram
   - whatsapp
   - zoho-mail
 
-casks_productivity:
+casksproductivity:
   - alt-tab
   - caffeine
   - keka
@@ -67,25 +61,24 @@ casks_productivity:
   - shottr
   - stats
 
-casks_networking_vpn:
+casksnetworkingvpn:
+  # ELIMINAT: pingmenu
   - inssider
-  - pingmenu
   - switchhosts
   - tailscale-app
   - tunnelblick
 
-casks_remote_access:
+casksremoteaccess:
   - royal-tsx
   - rustdesk
   - windows-app
 
-casks_file_management_cloud:
+casksfilemanagementcloud:
   - box-drive
   - localsend
-#  - neardrop
   - synology-drive
 
-casks_system_utilities:
+caskssystemutilities:
   - balenaetcher
   - betterdisplay
   - disk-inventory-x
@@ -96,22 +89,39 @@ casks_system_utilities:
   - wins
   - xca
 
-casks_microsoft_suite:
+casksmicrosoftsuite:
   - microsoft-auto-update
   - microsoft-azure-storage-explorer
   - microsoft-office
 
-casks_media:
+casksmedia:
   - vlc
 
-casks_documents:
+casksdocuments:
   - adobe-acrobat-reader
   - macdown
   - mark-text
   - modern-csv
-  - xournal++
+  - xournal
 
-casks_hardware:
+caskshardware:
   - hackintool
-  - logi-options+
+  - logi-options
 
+# App Store apps (nous)
+mas_apps:
+  1158928913: "Ping Status"
+  1274495053: "Microsoft To Do"
+  1509590766: "MuteKey"
+  1553936137: "Azure VPN Client"
+  1451685025: "WireGuard"
+
+# Startup apps (nous)
+startup_apps:
+  - Heliport
+  - BetterDisplay
+  - Maccy
+  - Shottr
+  - Stats
+  - MuteKey
+  - OneDrive

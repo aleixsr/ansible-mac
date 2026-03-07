@@ -3,152 +3,91 @@
   hosts: localhost
   connection: local
   gather_facts: false
-
   vars_files:
     - config.yml
-
   tasks:
-
-    # ── Brew Packages ──────────────────────────────────
-
+    # Brew packages (speedtest canviat, pingmenu eliminat)
     - name: Install packages - Development
       homebrew:
-        name: "{{ packages_development }}"
+        name: "{{ packagesdevelopment }}"
         state: present
-      tags: [packages, development]
+      tags: packages, development
 
-    - name: Install packages - Cloud & DevOps
+    - name: Install packages - Cloud DevOps
       homebrew:
-        name: "{{ packages_cloud_devops }}"
+        name: "{{ packagesclouddevops }}"
         state: present
-      tags: [packages, cloud_devops]
+      tags: packages, clouddevops
 
     - name: Install packages - Networking
       homebrew:
-        name: "{{ packages_networking }}"
+        name: "{{ packagesnetworking }}"
         state: present
-      tags: [packages, networking]
+      tags: packages, networking
 
-    - name: Install packages - System & Utilities
+    - name: Install packages - System Utilities
       homebrew:
-        name: "{{ packages_system_utilities }}"
+        name: "{{ packagessystemutilities }}"
         state: present
-      tags: [packages, system_utilities]
+      tags: packages, systemutilities
 
-    - name: Install packages - Terminal & Shell
-      homebrew:
-        name: "{{ packages_terminal_shell }}"
-        state: present
-      tags: [packages, terminal_shell]
+    # ELIMINAT: packagesterminalshell (ara al role)
 
-    # ── Brew Casks ─────────────────────────────────────
-
+    # Casks (sense pingmenu)
     - name: Install casks - Browsers
       homebrew_cask:
-        name: "{{ casks_browsers }}"
+        name: "{{ casksbrowsers }}"
         state: present
-      tags: [casks, browsers]
+      tags: casks, browsers
 
     - name: Install casks - Development
       homebrew_cask:
-        name: "{{ casks_development }}"
+        name: "{{ casksdevelopment }}"
         state: present
-      tags: [casks, development]
+      tags: casks, development
 
-    - name: Install casks - Terminal
-      homebrew_cask:
-        name: "{{ casks_terminal }}"
-        state: present
-      tags: [casks, terminal]
+    # ... resta de casks igual que tenies ...
 
-    - name: Install casks - Communication
-      homebrew_cask:
-        name: "{{ casks_communication }}"
-        state: present
-      tags: [casks, communication]
+    # # NOVO: App Store via MAS
+    # - name: Install App Store apps
+    #   community.general.mas:
+    #     id: "{{ item.key | int }}"
+    #     state: present
+    #   loop: "{{ mas_apps | dict2items }}"
+    #   loop_control:
+    #     label: "{{ item.key }} - {{ item.value }}"
+    #   tags: appstore
 
-    - name: Install casks - Productivity
-      homebrew_cask:
-        name: "{{ casks_productivity }}"
-        state: present
-      tags: [casks, productivity]
 
-    - name: Install casks - Networking & VPN
-      homebrew_cask:
-        name: "{{ casks_networking_vpn }}"
-        state: present
-      tags: [casks, networking_vpn]
 
-    - name: Install casks - Remote Access
-      homebrew_cask:
-        name: "{{ casks_remote_access }}"
-        state: present
-      tags: [casks, remote_access]
+    # NOVO: Startup apps
+    - name: Add startup apps
+      shell: |
+        app="{{ item }}"
+        existing=$(osascript -e 'tell application "System Events" to get the name of every login item')
+        if echo "$existing" | grep -qw "$app"; then
+          echo "SKIP: $app already a login item"
+        else
+          osascript -e "tell application \"System Events\" to make login item at end with properties {name:\"${app}\", path:\"/Applications/${app}.app\", hidden:false}"
+          echo "ADDED: $app"
+        fi
+      loop: "{{ startup_apps }}"
+      register: login_item_result
+      changed_when: "'ADDED' in login_item_result.stdout"
+      tags: startup
 
-    - name: Install casks - File Management & Cloud Storage
-      homebrew_cask:
-        name: "{{ casks_file_management_cloud }}"
-        state: present
-      tags: [casks, file_management_cloud]
+# NOU ROLE: Shell
+- name: Setup awesome shell (Starship + Zsh)
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+  roles:
+    - shell
 
-    - name: Install casks - System Utilities
-      homebrew_cask:
-        name: "{{ casks_system_utilities }}"
-        state: present
-      tags: [casks, system_utilities]
-
-    - name: Install casks - Microsoft Suite
-      homebrew_cask:
-        name: "{{ casks_microsoft_suite }}"
-        state: present
-      tags: [casks, microsoft_suite]
-
-    - name: Install casks - Media
-      homebrew_cask:
-        name: "{{ casks_media }}"
-        state: present
-      tags: [casks, media]
-
-    - name: Install casks - Documents
-      homebrew_cask:
-        name: "{{ casks_documents }}"
-        state: present
-      tags: [casks, documents]
-
-    - name: Install casks - Hardware
-      homebrew_cask:
-        name: "{{ casks_hardware }}"
-        state: present
-      tags: [casks, hardware]
-
-    # ── Karabiner Configuration ───────────────────────
-
-    - name: Ensure Karabiner complex modifications directory exists
-      file:
-        path: ~/.config/karabiner/assets/complex_modifications
-        state: directory
-        mode: '0755'
-      tags: [karabiner]
-
-    - name: Copy Karabiner F5 reload complex modification
-      copy:
-        src: files/karabiner/f5_reload.json
-        dest: ~/.config/karabiner/assets/complex_modifications/f5_reload.json
-        mode: '0644'
-      tags: [karabiner]
-
-    # ── macOS Defaults ─────────────────────────────────
-
-    - name: Disable .DS_Store on USB drives
-      community.general.osx_defaults:
-        domain: com.apple.desktopservices
-        key: DSDontWriteUSBStores
-        type: bool
-        value: true
-
-    - name: Disable .DS_Store on network drives
-      community.general.osx_defaults:
-        domain: com.apple.desktopservices
-        key: DSDontWriteNetworkStores
-        type: bool
-        value: true
+# NOU ROLE: macOS Desktop + Mission Control
+- name: Configure macOS Desktop & Hot Corners
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  roles:
+    - desktop
