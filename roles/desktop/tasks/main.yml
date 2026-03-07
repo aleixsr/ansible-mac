@@ -1,0 +1,68 @@
+---
+# Desktop: amaga icones del Finder
+- name: Disable desktop icons
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: CreateDesktop
+    type: string
+    value: "false"
+  tags: desktop
+
+- name: Reload Finder
+  shell: killall Finder || true
+  changed_when: false
+  tags: desktop
+
+# Hot corners: Mission Control cantonades superiors
+- name: Set top-right hot corner to Mission Control
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: wvous-tr-corner
+    type: int
+    value: 2          # 2 = Mission Control
+  tags: hotcorners
+
+- name: Set top-right hot corner modifier to none
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: wvous-tr-modifier
+    type: int
+    value: 0          # 0 = sense modificador
+  tags: hotcorners
+
+- name: Set top-left hot corner to Mission Control
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: wvous-tl-corner
+    type: int
+    value: 2
+  tags: hotcorners
+
+- name: Set top-left hot corner modifier to none
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: wvous-tl-modifier
+    type: int
+    value: 0
+  tags: hotcorners
+
+- name: Reload Dock
+  shell: killall Dock || true
+  changed_when: false
+  tags: hotcorners
+
+- name: Disable natural scrolling (trackpad/mouse)
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.swipescrolldirection
+    type: bool
+    value: false      # NO = scroll “clàssic”, estil Windows
+  tags: input,trackpad
+
+- name: Use F1, F2, etc. as standard function keys
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.keyboard.fnState
+    type: bool
+    value: true       # F1..F12 com a tecles de funció
+  tags: keyboard,fnkeys

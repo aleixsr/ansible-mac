@@ -7,6 +7,12 @@
     - config.yml
   tasks:
     # Brew packages (speedtest canviat, pingmenu eliminat)
+    - name: Tap teamookla/speedtest
+      homebrew_tap:
+        name: teamookla/speedtest
+        state: present
+      tags: packages, networking
+
     - name: Install packages - Development
       homebrew:
         name: "{{ packagesdevelopment }}"

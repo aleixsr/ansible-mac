@@ -12,8 +12,7 @@ packagesnetworking:
   - rustscan
   - mtr
   - nmap
-  # speedtest-cli → teamookla/speedtest
-  - teamookla/speedtest
+  - speedtest
   - swaks
   - tcping
   - wget
