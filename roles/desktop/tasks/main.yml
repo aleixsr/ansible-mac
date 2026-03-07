@@ -56,7 +56,63 @@
     domain: NSGlobalDomain
     key: com.apple.swipescrolldirection
     type: bool
-    value: false      # NO = scroll “clàssic”, estil Windows
+    value: false
+  tags: input,trackpad
+
+- name: Trackpad - Quiet click
+  community.general.osx_defaults:
+    domain: com.apple.AppleMultitouchTrackpad
+    key: ActuateDetents
+    type: int
+    value: 0
+  tags: input,trackpad
+
+- name: Trackpad - Enable Force Click and haptic feedback
+  community.general.osx_defaults:
+    domain: com.apple.AppleMultitouchTrackpad
+    key: ForceSuppressed
+    type: bool
+    value: false
+  tags: input,trackpad
+
+- name: Trackpad - Tap to click
+  community.general.osx_defaults:
+    domain: com.apple.AppleMultitouchTrackpad
+    key: Clicking
+    type: bool
+    value: true
+  tags: input,trackpad
+
+- name: Trackpad - Secondary click with two fingers
+  community.general.osx_defaults:
+    domain: com.apple.AppleMultitouchTrackpad
+    key: TrackpadRightClick
+    type: bool
+    value: true
+  tags: input,trackpad
+
+- name: Trackpad - Secondary click mode (two fingers, not corner)
+  community.general.osx_defaults:
+    domain: com.apple.AppleMultitouchTrackpad
+    key: TrackpadCornerSecondaryClick
+    type: int
+    value: 0
+  tags: input,trackpad
+
+- name: Trackpad - Enable dragging without drag lock (Accessibility)
+  community.general.osx_defaults:
+    domain: com.apple.AppleMultitouchTrackpad
+    key: Dragging
+    type: bool
+    value: true
+  tags: input,trackpad
+
+- name: Trackpad - Dragging style without drag lock
+  community.general.osx_defaults:
+    domain: com.apple.AppleMultitouchTrackpad
+    key: DragLock
+    type: int
+    value: 0
   tags: input,trackpad
 
 - name: Use F1, F2, etc. as standard function keys
