@@ -43,7 +43,7 @@
                 "^com\\.jetbrains\\.pycharm$",
                 "^com\\.jetbrains\\.webstorm$",
                 "^com\\.jetbrains\\.phpstorm$",
-                "^com\\.royalapplications\\.royalts$"
+                "^com\\.lemonmojo\\.RoyalTSX\\.App$"
               ],
               "type": "frontmost_application_unless"
             }
@@ -108,7 +108,7 @@
                 "^com\\.jetbrains\\.pycharm$",
                 "^com\\.jetbrains\\.webstorm$",
                 "^com\\.jetbrains\\.phpstorm$",
-                "^com\\.royalapplications\\.royalts$"
+                "^com\\.lemonmojo\\.RoyalTSX\\.App$"
               ],
               "type": "frontmost_application_unless"
             }
