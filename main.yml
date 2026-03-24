@@ -97,3 +97,11 @@
   gather_facts: false
   roles:
     - desktop
+
+# NOU ROLE: Karabiner complex modifications
+- name: Deploy Karabiner-Elements complex modifications
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  roles:
+    - karabiner

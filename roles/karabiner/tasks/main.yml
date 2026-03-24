@@ -1,0 +1,16 @@
+---
+- name: Ensure Karabiner complex_modifications directory exists
+  file:
+    path: "{{ ansible_facts['env']['HOME'] }}/.config/karabiner/assets/complex_modifications"
+    state: directory
+    mode: "0755"
+  tags: karabiner
+
+- name: Copy Karabiner complex modifications
+  copy:
+    src: "{{ item }}"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.config/karabiner/assets/complex_modifications/"
+    mode: "0644"
+  with_fileglob:
+    - "{{ playbook_dir }}/files/karabiner/*.json"
+  tags: karabiner
