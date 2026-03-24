@@ -1,11 +1,30 @@
 {
-  "title": "F5 to Cmd+R",
+  "title": "[Hackintosh] F5 Reload",
   "rules": [
     {
-      "description": "Map F5 to Cmd+R",
+      "description": "Map F5 to Cmd+R in browsers",
       "manipulators": [
         {
           "type": "basic",
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.apple\\.Safari$",
+                "^com\\.apple\\.SafariTechnologyPreview$",
+                "^com\\.google\\.Chrome$",
+                "^com\\.google\\.Chrome\\.app\\.",
+                "^com\\.microsoft\\.edgemac$",
+                "^com\\.microsoft\\.edgemac\\.app\\.",
+                "^org\\.mozilla\\.firefox$",
+                "^com\\.brave\\.Browser$",
+                "^com\\.brave\\.Browser\\.app\\.",
+                "^company\\.thebrowser\\.Browser$",
+                "^com\\.operasoftware\\.Opera$",
+                "^com\\.vivaldi\\.Vivaldi$"
+              ]
+            }
+          ],
           "from": { "key_code": "f5" },
           "to": [
             {
@@ -18,4 +37,3 @@
     }
   ]
 }
-
