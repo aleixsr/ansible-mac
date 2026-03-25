@@ -52,7 +52,71 @@
         state: present
       tags: casks, development
 
-    # ... resta de casks igual que tenies ...
+    - name: Install casks - Terminal
+      homebrew_cask:
+        name: "{{ casksterminal }}"
+        state: present
+      tags: casks, terminal
+
+    - name: Install casks - Communication
+      homebrew_cask:
+        name: "{{ caskscommunication }}"
+        state: present
+      tags: casks, communication
+
+    - name: Install casks - Productivity
+      homebrew_cask:
+        name: "{{ casksproductivity }}"
+        state: present
+      tags: casks, productivity
+
+    - name: Install casks - Networking & VPN
+      homebrew_cask:
+        name: "{{ casksnetworkingvpn }}"
+        state: present
+      tags: casks, networking
+
+    - name: Install casks - Remote Access
+      homebrew_cask:
+        name: "{{ casksremoteaccess }}"
+        state: present
+      tags: casks, remoteaccess
+
+    - name: Install casks - File Management & Cloud
+      homebrew_cask:
+        name: "{{ casksfilemanagementcloud }}"
+        state: present
+      tags: casks, filemanagement
+
+    - name: Install casks - System Utilities
+      homebrew_cask:
+        name: "{{ caskssystemutilities }}"
+        state: present
+      tags: casks, systemutilities
+
+    - name: Install casks - Microsoft Suite
+      homebrew_cask:
+        name: "{{ casksmicrosoftsuite }}"
+        state: present
+      tags: casks, microsoft
+
+    - name: Install casks - Media
+      homebrew_cask:
+        name: "{{ casksmedia }}"
+        state: present
+      tags: casks, media
+
+    - name: Install casks - Documents
+      homebrew_cask:
+        name: "{{ casksdocuments }}"
+        state: present
+      tags: casks, documents
+
+    - name: Install casks - Hardware
+      homebrew_cask:
+        name: "{{ caskshardware }}"
+        state: present
+      tags: casks, hardware
 
     # # NOVO: App Store via MAS
     # - name: Install App Store apps
