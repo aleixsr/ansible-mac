@@ -1,0 +1,70 @@
+---
+- name: Install shell packages (Starship + Zsh plugins)
+  homebrew:
+    name:
+      - starship
+      - zsh-autosuggestions
+      - zsh-syntax-highlighting
+    state: present
+  tags: shell
+
+- name: Get Homebrew prefix
+  shell: brew --prefix
+  register: hb_prefix
+  changed_when: false
+  tags: shell
+
+- name: Set Homebrew prefix fact
+  set_fact:
+    homebrew_prefix: "{{ hb_prefix.stdout }}"
+  tags: shell
+
+- name: Ensure .config dir exists
+  file:
+    path: "{{ ansible_env.HOME }}/.config"
+    state: directory
+    mode: "0755"
+  tags: shell
+
+- name: Ensure .zshrc exists
+  copy:
+    dest: "{{ ansible_env.HOME }}/.zshrc"
+    content: ""
+    force: no
+    mode: "0644"
+  tags: shell
+
+- name: Configure .zshrc for Starship + plugins
+  blockinfile:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    marker: "# {mark} ANSIBLE SHELL CONFIG"
+    block: |
+      # Plugins
+      source {{ homebrew_prefix }}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+      source {{ homebrew_prefix }}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+      # Starship prompt
+      eval "$(starship init zsh)"
+  tags: shell
+
+- name: Install Starship config
+  copy:
+    src: starship.toml
+    dest: "{{ ansible_env.HOME }}/.config/starship.toml"
+    mode: "0644"
+  tags: shell
+
+- name: Configure shell aliases
+  blockinfile:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    marker: "# {mark} ANSIBLE ALIASES"
+    block: |
+      # Aliases
+      alias ll='ls -al'
+  tags: shell
+
+- name: Install Meslo Nerd Font per icones Starship
+  homebrew_cask:
+    name: font-meslo-lg-nerd-font
+    state: present
+  tags: shell

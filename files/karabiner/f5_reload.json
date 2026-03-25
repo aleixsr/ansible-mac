@@ -2,7 +2,7 @@
   "title": "[Hackintosh] F5 Reload",
   "rules": [
     {
-      "description": "Map F5 to Cmd+R in browsers",
+      "description": "Map F5 to Cmd+R (only browsers)",
       "manipulators": [
         {
           "type": "basic",

@@ -2,7 +2,7 @@
   "title": "[Hackintosh] Home and End Keys",
   "rules": [
     {
-      "description": "Home to Command Left",
+      "description": "Map Home to Cmd+Left (except terminals/RDP/VMs)",
       "manipulators": [
         {
           "conditions": [
@@ -67,7 +67,7 @@
       ]
     },
     {
-      "description": "End to Command Right",
+      "description": "Map End to Cmd+Right (except terminals/RDP/VMs)",
       "manipulators": [
         {
           "conditions": [

@@ -115,6 +115,23 @@
     value: 0
   tags: input,trackpad
 
+# Accessibility - Zoom with Ctrl+scroll wheel
+- name: Accessibility - Enable zoom with scroll wheel
+  community.general.osx_defaults:
+    domain: com.apple.universalaccess
+    key: closeViewScrollWheelToggle
+    type: bool
+    value: true
+  tags: accessibility,zoom
+
+- name: Accessibility - Set zoom modifier key to Ctrl
+  community.general.osx_defaults:
+    domain: com.apple.universalaccess
+    key: HIDScrollZoomModifierMask
+    type: int
+    value: 262144
+  tags: accessibility,zoom
+
 - name: Use F1, F2, etc. as standard function keys
   community.general.osx_defaults:
     domain: NSGlobalDomain

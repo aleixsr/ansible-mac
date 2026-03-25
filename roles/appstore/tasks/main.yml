@@ -1,0 +1,17 @@
+- name: Install App Store apps (skip if not available)
+  community.general.mas:
+    id: "{{ item.key | int }}"
+    state: present
+  loop: "{{ mas_apps | dict2items }}"
+  loop_control:
+    label: "{{ item.key }} - {{ item.value }}"
+  ignore_errors: yes
+  register: mas_result
+  tags: appstore
+
+- name: Show skipped MAS apps
+  debug:
+    msg: "Skipped: {{ item.item.value }} (ID {{ item.item.key }})"
+  loop: "{{ mas_result.results | selectattr('failed', 'equalto', true) | list }}"
+  when: mas_result.results is defined
+  tags: appstore

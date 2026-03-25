@@ -1,0 +1,12 @@
+---
+- name: Add startup apps to Login Items
+  osx_defaults:
+    domain: com.apple.loginitems
+    key: SessionItems
+    value:
+      - path: "/Applications/{{ item }}.app"
+        hide: true
+    type: array
+    append: true
+  loop: "{{ startup_apps }}"
+  tags: startup
