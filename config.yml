@@ -72,7 +72,6 @@ casksproductivity:
 casksnetworkingvpn:
   # ELIMINAT: pingmenu
   # NOTA: FortiClient no disponible a Homebrew Cask, instal·lar manualment des de forticlient.com
-  - inssider
   - switchhosts
   - tailscale-app
   - tunnelblick
@@ -123,9 +122,7 @@ casksdocuments:
   - xournal++ # NOTA: deprecat, Gatekeeper el desactivarà el 2026-09-01
 
 caskshardware:
-  - hackintool
   - logi-options+
-  # NOTA: OCAuxiliaryTools i Xplist no disponibles a Homebrew Cask, instal·lar manualment (eines Hackintosh/OpenCore)
 
 # App Store apps (nous)
 mas_apps:
@@ -137,8 +134,6 @@ mas_apps:
 
 # Startup apps (nous)
 startup_apps:
-  # NOTA: Heliport no disponible a Homebrew Cask, instal·lar manualment des de https://github.com/OpenIntelWireless/HeliPort
-  - Heliport
   - BetterDisplay
   - Maccy
   - Shottr

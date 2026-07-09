@@ -113,17 +113,17 @@ startup_apps:
 | Terminal | iTerm2, PowerShell, Tabby, Warp |
 | Communication | Mailspring, Microsoft Teams, Shortwave, Telegram, WhatsApp, Zoho Mail |
 | Productivity | AltTab, Caffeine, Claude, DockDoor, Keka, Maccy, Notion, Numi, Rectangle, Shottr, Stats |
-| Networking & VPN | iNet Network Scanner (`inssider`), SwitchHosts, Tailscale, Tunnelblick |
+| Networking & VPN | SwitchHosts, Tailscale, Tunnelblick |
 | Remote access | Royal TSX, RustDesk, Windows App |
 | File management & cloud | Box Drive, LocalSend, Synology Drive |
 | System utilities | balenaEtcher, BetterDisplay, Bluesnooze, Disk Inventory X, Karabiner-Elements (bundles EventViewer), LICEcap, macFUSE, NovaBench, Resolutionator, SuperDuper!, Wins, XCA |
 | Microsoft suite | Microsoft AutoUpdate, Microsoft Azure Storage Explorer, Microsoft Office, OneDrive |
 | Media | HandBrake, VLC |
 | Documents | Adobe Acrobat Reader, MacDown, Mark Text, Modern CSV, ONLYOFFICE, RevPDF Editor, Xournal++ (deprecated by its author — macOS Gatekeeper will disable it on 2026-09-01) |
-| Hardware | HackinTool, Logi Options+ |
+| Hardware | Logi Options+ |
 | Fonts (via `roles/shell`) | Meslo Nerd Font (`font-meslo-lg-nerd-font`) |
 
-Not available as a Homebrew cask — install manually if needed: **FortiClient** (forticlient.com), **HeliPort** (github.com/OpenIntelWireless/HeliPort), **XtraFinder** (discontinued/incompatible with recent macOS), **OCAuxiliaryTools** and **Xplist** (OpenCore/Hackintosh community tools).
+Not available as a Homebrew cask — install manually if needed: **FortiClient** (forticlient.com), **XtraFinder** (discontinued/incompatible with recent macOS).
 
 ### Mac App Store apps (via `mas`)
 
@@ -137,7 +137,7 @@ Not available as a Homebrew cask — install manually if needed: **FortiClient**
 
 ### Startup / login items
 
-Heliport, BetterDisplay, Maccy, Shottr, Stats, MuteKey, OneDrive
+BetterDisplay, Maccy, Shottr, Stats, MuteKey, OneDrive
 
 ## Project structure
 
