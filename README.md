@@ -98,7 +98,7 @@ startup_apps:
 
 | Category | Packages |
 |---|---|
-| Development | `gh`, `git` |
+| Development | `gh`, `git`, `python@3.14` |
 | Cloud / DevOps | `azure-cli`, `oci-cli` |
 | Networking | `iperf3`, `rustscan`, `mtr`, `nmap`, `speedtest` (via `teamookla/speedtest` tap), `swaks`, `tcping`, `wget` |
 | System utilities | `htop`, `mas` |
@@ -108,20 +108,22 @@ startup_apps:
 
 | Category | Apps |
 |---|---|
-| Browsers | Brave Browser, Chromium, Google Chrome, Microsoft Edge |
-| Development | Apache Directory Studio, Copilot CLI, draw.io, GitHub Desktop, SoapUI, Visual Studio Code |
+| Browsers | Brave Browser, Chromium, Firefox, Google Chrome, Microsoft Edge |
+| Development | Apache Directory Studio, Copilot CLI, DBeaver Community, draw.io, GitHub Desktop, SoapUI, Sublime Text, Visual Studio Code, Visual Studio Code Insiders |
 | Terminal | iTerm2, PowerShell, Tabby, Warp |
-| Communication | Mailspring, Microsoft Teams, Telegram, WhatsApp, Zoho Mail |
-| Productivity | AltTab, Caffeine, DockDoor, Keka, Maccy, Numi, Rectangle, Shottr, Stats |
+| Communication | Mailspring, Microsoft Teams, Shortwave, Telegram, WhatsApp, Zoho Mail |
+| Productivity | AltTab, Caffeine, Claude, DockDoor, Keka, Maccy, Notion, Numi, Rectangle, Shottr, Stats |
 | Networking & VPN | iNet Network Scanner (`inssider`), SwitchHosts, Tailscale, Tunnelblick |
 | Remote access | Royal TSX, RustDesk, Windows App |
 | File management & cloud | Box Drive, LocalSend, Synology Drive |
-| System utilities | balenaEtcher, BetterDisplay, Disk Inventory X, Karabiner-Elements, macFUSE, NovaBench, Resolutionator, Wins, XCA |
-| Microsoft suite | Microsoft AutoUpdate, Microsoft Azure Storage Explorer, Microsoft Office |
-| Media | VLC |
-| Documents | Adobe Acrobat Reader, MacDown, Mark Text, Modern CSV, Xournal |
-| Hardware | HackinTool, Logi Options |
+| System utilities | balenaEtcher, BetterDisplay, Bluesnooze, Disk Inventory X, Karabiner-Elements (bundles EventViewer), LICEcap, macFUSE, NovaBench, Resolutionator, SuperDuper!, Wins, XCA |
+| Microsoft suite | Microsoft AutoUpdate, Microsoft Azure Storage Explorer, Microsoft Office, OneDrive |
+| Media | HandBrake, VLC |
+| Documents | Adobe Acrobat Reader, MacDown, Mark Text, Modern CSV, ONLYOFFICE, RevPDF Editor, Xournal++ (deprecated by its author — macOS Gatekeeper will disable it on 2026-09-01) |
+| Hardware | HackinTool, Logi Options+ |
 | Fonts (via `roles/shell`) | Meslo Nerd Font (`font-meslo-lg-nerd-font`) |
+
+Not available as a Homebrew cask — install manually if needed: **FortiClient** (forticlient.com), **HeliPort** (github.com/OpenIntelWireless/HeliPort), **XtraFinder** (discontinued/incompatible with recent macOS), **OCAuxiliaryTools** and **Xplist** (OpenCore/Hackintosh community tools).
 
 ### Mac App Store apps (via `mas`)
 

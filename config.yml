@@ -2,6 +2,7 @@
 packagesdevelopment:
   - gh
   - git
+  - python@3.14
 
 packagesclouddevops:
   - azure-cli
@@ -26,16 +27,20 @@ packagessystemutilities:
 casksbrowsers:
   - brave-browser
   - chromium
+  - firefox
   - google-chrome
   - microsoft-edge
 
 casksdevelopment:
   - apache-directory-studio
   - copilot-cli
+  - dbeaver-community
   - drawio
   - github
   - soapui
+  - sublime-text
   - visual-studio-code
+  - visual-studio-code@insiders
 
 casksterminal:
   - iterm2
@@ -46,6 +51,7 @@ casksterminal:
 caskscommunication:
   - mailspring
   - microsoft-teams
+  - shortwave
   - telegram
   - whatsapp
   - zoho-mail
@@ -53,9 +59,11 @@ caskscommunication:
 casksproductivity:
   - alt-tab
   - caffeine
+  - claude
   - dockdoor
   - keka
   - maccy
+  - notion
   - numi
   - rectangle
   - shottr
@@ -63,6 +71,7 @@ casksproductivity:
 
 casksnetworkingvpn:
   # ELIMINAT: pingmenu
+  # NOTA: FortiClient no disponible a Homebrew Cask, instal·lar manualment des de forticlient.com
   - inssider
   - switchhosts
   - tailscale-app
@@ -81,20 +90,27 @@ casksfilemanagementcloud:
 caskssystemutilities:
   - balenaetcher
   - betterdisplay
+  - bluesnooze
   - disk-inventory-x
   - karabiner-elements
+  # NOTA: Karabiner-EventViewer no és un cask separat, s'instal·la junt amb karabiner-elements
+  - licecap
   - macfuse
   - novabench
   - resolutionator
+  - superduper
   - wins
   - xca
+  # NOTA: XtraFinder no disponible a Homebrew Cask (discontinuat, incompatible amb macOS recents)
 
 casksmicrosoftsuite:
   - microsoft-auto-update
   - microsoft-azure-storage-explorer
   - microsoft-office
+  - onedrive
 
 casksmedia:
+  - handbrake-app
   - vlc
 
 casksdocuments:
@@ -102,11 +118,14 @@ casksdocuments:
   - macdown
   - mark-text
   - modern-csv
-  - xournal
+  - onlyoffice
+  - revpdf-editor
+  - xournal++ # NOTA: deprecat, Gatekeeper el desactivarà el 2026-09-01
 
 caskshardware:
   - hackintool
-  - logi-options
+  - logi-options+
+  # NOTA: OCAuxiliaryTools i Xplist no disponibles a Homebrew Cask, instal·lar manualment (eines Hackintosh/OpenCore)
 
 # App Store apps (nous)
 mas_apps:
@@ -118,6 +137,7 @@ mas_apps:
 
 # Startup apps (nous)
 startup_apps:
+  # NOTA: Heliport no disponible a Homebrew Cask, instal·lar manualment des de https://github.com/OpenIntelWireless/HeliPort
   - Heliport
   - BetterDisplay
   - Maccy
