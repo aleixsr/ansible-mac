@@ -46,10 +46,42 @@
     value: 0
   tags: hotcorners
 
+- name: Set Dock position to the right
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: orientation
+    type: string
+    value: right
+  tags: dock
+
+- name: Set Dock tile size
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: tilesize
+    type: float
+    value: 56
+  tags: dock
+
+- name: Enable Dock magnification
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: magnification
+    type: bool
+    value: true
+  tags: dock
+
+- name: Set Dock magnified tile size
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: largesize
+    type: float
+    value: 74
+  tags: dock
+
 - name: Reload Dock
   shell: killall Dock || true
   changed_when: false
-  tags: hotcorners
+  tags: hotcorners,dock
 
 - name: Disable natural scrolling (trackpad/mouse)
   community.general.osx_defaults:
@@ -79,8 +111,8 @@
   community.general.osx_defaults:
     domain: com.apple.AppleMultitouchTrackpad
     key: Clicking
-    type: bool
-    value: true
+    type: int
+    value: 1
   tags: input,trackpad
 
 - name: Trackpad - Secondary click with two fingers
@@ -103,8 +135,8 @@
   community.general.osx_defaults:
     domain: com.apple.AppleMultitouchTrackpad
     key: Dragging
-    type: bool
-    value: true
+    type: int
+    value: 1
   tags: input,trackpad
 
 - name: Trackpad - Dragging style without drag lock
@@ -115,22 +147,11 @@
     value: 0
   tags: input,trackpad
 
-# Accessibility - Zoom with Ctrl+scroll wheel
-- name: Accessibility - Enable zoom with scroll wheel
-  community.general.osx_defaults:
-    domain: com.apple.universalaccess
-    key: closeViewScrollWheelToggle
-    type: bool
-    value: true
-  tags: accessibility,zoom
-
-- name: Accessibility - Set zoom modifier key to Ctrl
-  community.general.osx_defaults:
-    domain: com.apple.universalaccess
-    key: HIDScrollZoomModifierMask
-    type: int
-    value: 262144
-  tags: accessibility,zoom
+# NOTA: Accessibility - Zoom amb Ctrl+scroll wheel no configurable per Ansible.
+# macOS protegeix el domini com.apple.universalaccess (TCC) i bloqueja `defaults write`
+# per a qualsevol procés, encara amb permisos d'Accessibility concedits.
+# Cal activar-ho manualment a Configuració del Sistema > Accessibilitat > Zoom >
+# "Use scroll gesture with modifier keys to zoom" (modificador: Control).
 
 - name: Use F1, F2, etc. as standard function keys
   community.general.osx_defaults:

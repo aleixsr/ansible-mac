@@ -1,5 +1,11 @@
 # ansible-mac
 
+> **Temporal:** alguns casks (p. ex. Microsoft Teams) instal·len un `.pkg` que crida `sudo` internament, i com que Ansible executa els mòduls sense terminal interactiu, `sudo` no pot demanar la contrasenya i el run falla. Mentre no hi hagi una solució millor, cal afegir aquesta línia amb `sudo visudo`:
+> ```
+> %admin          ALL = (ALL) NOPASSWD:ALL
+> ```
+> Recorda revertir-ho quan ja no calgui, ja que dona a qualsevol usuari del grup `admin` sudo sense contrasenya.
+
 Personal Ansible playbook to provision and configure a macOS machine: Homebrew packages/casks, Mac App Store apps, login items, shell setup (Starship + Zsh), macOS system preferences, and Karabiner-Elements key mappings.
 
 ## What it does
@@ -111,19 +117,21 @@ startup_apps:
 | Browsers | Brave Browser, Chromium, Firefox, Google Chrome, Microsoft Edge |
 | Development | Apache Directory Studio, Copilot CLI, DBeaver Community, draw.io, GitHub Desktop, SoapUI, Sublime Text, Visual Studio Code, Visual Studio Code Insiders |
 | Terminal | iTerm2, PowerShell, Tabby, Warp |
-| Communication | Mailspring, Microsoft Teams, Shortwave, Telegram, WhatsApp, Zoho Mail |
+| Communication | Mailspring, Shortwave, Telegram, WhatsApp, Zoho Mail |
 | Productivity | AltTab, Caffeine, Claude, DockDoor, Keka, Maccy, Notion, Numi, Rectangle, Shottr, Stats |
 | Networking & VPN | SwitchHosts, Tailscale, Tunnelblick |
 | Remote access | Royal TSX, RustDesk, Windows App |
 | File management & cloud | Box Drive, LocalSend, Synology Drive |
 | System utilities | balenaEtcher, BetterDisplay, Bluesnooze, Disk Inventory X, Karabiner-Elements (bundles EventViewer), LICEcap, macFUSE, NovaBench, Resolutionator, SuperDuper!, Wins, XCA |
-| Microsoft suite | Microsoft AutoUpdate, Microsoft Azure Storage Explorer, Microsoft Office, OneDrive |
+| Microsoft suite | Microsoft AutoUpdate, Microsoft Azure Storage Explorer, Microsoft Office (bundles OneDrive) |
 | Media | HandBrake, VLC |
 | Documents | Adobe Acrobat Reader, MacDown, Mark Text, Modern CSV, ONLYOFFICE, RevPDF Editor, Xournal++ (deprecated by its author — macOS Gatekeeper will disable it on 2026-09-01) |
 | Hardware | Logi Options+ |
 | Fonts (via `roles/shell`) | Meslo Nerd Font (`font-meslo-lg-nerd-font`) |
 
 Not available as a Homebrew cask — install manually if needed: **FortiClient** (forticlient.com), **XtraFinder** (discontinued/incompatible with recent macOS).
+
+**Microsoft Teams** is intentionally left out of `config.yml` — its `.pkg` requires an interactive `sudo` prompt that fails under Ansible (see the temporary `sudoers` workaround at the top of this README). Install it manually with `brew install --cask microsoft-teams`, or re-add it to `casksmicrosoftsuite`/`caskscommunication` once the `NOPASSWD` rule is in place.
 
 ### Mac App Store apps (via `mas`)
 

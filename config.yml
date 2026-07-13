@@ -21,6 +21,7 @@ packagesnetworking:
 packagessystemutilities:
   - htop
   - mas
+  - powershell
 
 # ELIMINAT: packagesterminalshell (ara va al role shell)
 
@@ -44,13 +45,12 @@ casksdevelopment:
 
 casksterminal:
   - iterm2
-  - powershell
   - tabby
   - warp
 
 caskscommunication:
   - mailspring
-  - microsoft-teams
+  # NOTA: microsoft-teams instal·lat manualment (el seu .pkg requereix sudo interactiu, incompatible amb Ansible)
   - shortwave
   - telegram
   - whatsapp
@@ -106,7 +106,7 @@ casksmicrosoftsuite:
   - microsoft-auto-update
   - microsoft-azure-storage-explorer
   - microsoft-office
-  - onedrive
+  # NOTA: onedrive no s'instal·la per separat, ja ve inclòs a microsoft-office (conflicte de cask)
 
 casksmedia:
   - handbrake-app

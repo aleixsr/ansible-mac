@@ -21,14 +21,14 @@
 
 - name: Ensure .config dir exists
   file:
-    path: "{{ ansible_env.HOME }}/.config"
+    path: "{{ ansible_facts['env']['HOME'] }}/.config"
     state: directory
     mode: "0755"
   tags: shell
 
 - name: Ensure .zshrc exists
   copy:
-    dest: "{{ ansible_env.HOME }}/.zshrc"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.zshrc"
     content: ""
     force: no
     mode: "0644"
@@ -36,7 +36,7 @@
 
 - name: Configure .zshrc for Starship + plugins
   blockinfile:
-    path: "{{ ansible_env.HOME }}/.zshrc"
+    path: "{{ ansible_facts['env']['HOME'] }}/.zshrc"
     marker: "# {mark} ANSIBLE SHELL CONFIG"
     block: |
       # Plugins
@@ -50,13 +50,13 @@
 - name: Install Starship config
   copy:
     src: starship.toml
-    dest: "{{ ansible_env.HOME }}/.config/starship.toml"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.config/starship.toml"
     mode: "0644"
   tags: shell
 
 - name: Configure shell aliases
   blockinfile:
-    path: "{{ ansible_env.HOME }}/.zshrc"
+    path: "{{ ansible_facts['env']['HOME'] }}/.zshrc"
     marker: "# {mark} ANSIBLE ALIASES"
     block: |
       # Aliases
