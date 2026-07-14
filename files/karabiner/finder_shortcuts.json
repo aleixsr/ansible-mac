@@ -41,6 +41,27 @@
           ]
         }
       ]
+    },
+    {
+      "description": "Map Return to Open (Finder only)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": ["^com\\.apple\\.finder$"]
+            }
+          ],
+          "from": { "key_code": "return_or_enter" },
+          "to": [
+            {
+              "key_code": "o",
+              "modifiers": ["left_command"]
+            }
+          ]
+        }
+      ]
     }
   ]
 }
