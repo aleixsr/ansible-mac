@@ -14,3 +14,41 @@
   with_fileglob:
     - "{{ playbook_dir }}/files/karabiner/*.json"
   tags: karabiner
+
+- name: Set Karabiner config path
+  ansible.builtin.set_fact:
+    karabiner_config_path: "{{ ansible_facts['env']['HOME'] }}/.config/karabiner/karabiner.json"
+  tags: karabiner
+
+- name: Read existing Karabiner config
+  ansible.builtin.slurp:
+    src: "{{ karabiner_config_path }}"
+  register: karabiner_config_raw
+  tags: karabiner
+
+- name: Parse existing Karabiner config
+  ansible.builtin.set_fact:
+    karabiner_config: "{{ karabiner_config_raw.content | b64decode | from_json }}"
+  tags: karabiner
+
+- name: Load complex modification rule definitions to enable
+  ansible.builtin.set_fact:
+    karabiner_enabled_rule_defs: "{{ (karabiner_enabled_rule_defs | default([])) + (lookup('file', item) | from_json).rules }}"
+  with_fileglob:
+    - "{{ playbook_dir }}/files/karabiner/*.json"
+  tags: karabiner
+
+- name: Enable rule definitions in the selected profile
+  ansible.builtin.set_fact:
+    karabiner_profiles_updated: "{{ (karabiner_profiles_updated | default([])) + [(item.selected | default(false)) | ternary(item | combine({'complex_modifications': {'rules': karabiner_enabled_rule_defs}}, recursive=True), item)] }}"
+  loop: "{{ karabiner_config.profiles }}"
+  loop_control:
+    label: "{{ item.name }}"
+  tags: karabiner
+
+- name: Write updated Karabiner config
+  ansible.builtin.copy:
+    content: "{{ karabiner_config | combine({'profiles': karabiner_profiles_updated}) | to_nice_json(indent=4) }}\n"
+    dest: "{{ karabiner_config_path }}"
+    mode: "0600"
+  tags: karabiner
