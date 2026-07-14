@@ -160,3 +160,11 @@
     type: bool
     value: true       # F1..F12 com a tecles de funció
   tags: keyboard,fnkeys
+
+- name: Disable double-space period substitution
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: NSAutomaticPeriodSubstitutionEnabled
+    type: bool
+    value: false
+  tags: keyboard

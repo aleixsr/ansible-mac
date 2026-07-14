@@ -1,0 +1,19 @@
+{
+  "title": "F12 as Print Screen",
+  "rules": [
+    {
+      "description": "Map F12 to Print Screen",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": { "key_code": "f12" },
+          "to": [
+            {
+              "key_code": "print_screen"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -5,6 +5,12 @@
 > %admin          ALL = (ALL) NOPASSWD:ALL
 > ```
 > Recorda revertir-ho quan ja no calgui, ja que dona a qualsevol usuari del grup `admin` sudo sense contrasenya.
+>
+> També cal desactivar Gatekeeper globalment perquè el `.pkg` s'instal·li sense bloquejar-se en apps sense notaritzar:
+> ```
+> sudo spctl --global-disable
+> ```
+> Torna-ho a activar quan acabis (`sudo spctl --global-enable`), ja que deixa el Mac sense la verificació de Gatekeeper per a tot el software instal·lat.
 
 Personal Ansible playbook to provision and configure a macOS machine: Homebrew packages/casks, Mac App Store apps, login items, shell setup (Starship + Zsh), macOS system preferences, and Karabiner-Elements key mappings.
 
