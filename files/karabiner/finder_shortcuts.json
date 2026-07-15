@@ -23,6 +23,27 @@
       ]
     },
     {
+      "description": "Map Backspace to Move to Trash (Finder only)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": ["^com\\.apple\\.finder$"]
+            }
+          ],
+          "from": { "key_code": "delete_or_backspace" },
+          "to": [
+            {
+              "key_code": "delete_or_backspace",
+              "modifiers": ["left_command"]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "description": "Map F2 to Rename (Finder only)",
       "manipulators": [
         {
