@@ -1,5 +1,5 @@
 {
-  "title": "[Hackintosh] Home and End Keys",
+  "title": "Home/End as Cmd+Left/Right (except terminals, RDP, VMs, MS Office)",
   "rules": [
     {
       "description": "Map Home to Cmd+Left (except terminals/RDP/VMs)",
@@ -43,7 +43,12 @@
                 "^com\\.jetbrains\\.pycharm$",
                 "^com\\.jetbrains\\.webstorm$",
                 "^com\\.jetbrains\\.phpstorm$",
-                "^com\\.lemonmojo\\.RoyalTSX\\.App$"
+                "^com\\.lemonmojo\\.RoyalTSX\\.App$",
+                "^com\\.microsoft\\.Excel$",
+                "^com\\.microsoft\\.Word$",
+                "^com\\.microsoft\\.Powerpoint$",
+                "^com\\.microsoft\\.Outlook$",
+                "^com\\.microsoft\\.onenote\\.mac$"
               ],
               "type": "frontmost_application_unless"
             }
@@ -108,7 +113,12 @@
                 "^com\\.jetbrains\\.pycharm$",
                 "^com\\.jetbrains\\.webstorm$",
                 "^com\\.jetbrains\\.phpstorm$",
-                "^com\\.lemonmojo\\.RoyalTSX\\.App$"
+                "^com\\.lemonmojo\\.RoyalTSX\\.App$",
+                "^com\\.microsoft\\.Excel$",
+                "^com\\.microsoft\\.Word$",
+                "^com\\.microsoft\\.Powerpoint$",
+                "^com\\.microsoft\\.Outlook$",
+                "^com\\.microsoft\\.onenote\\.mac$"
               ],
               "type": "frontmost_application_unless"
             }
