@@ -36,7 +36,7 @@ Running the playbook will:
    - Accessibility zoom with Ctrl + scroll
    - Use F1–F12 as standard function keys
 6. **Deploy Karabiner-Elements complex modifications** (`roles/karabiner`) by copying JSON rule files from `files/karabiner/` into `~/.config/karabiner/assets/complex_modifications/`.
-7. **Install Tabby plugins** (`roles/tabby`) via `npm install --prefix`, into `~/Library/Application Support/tabby/plugins` (requires `node`, installed as part of step 1). Currently installs `terminus-sync-config` (syncs Tabby's config to a GitHub/Gitee Gist — configure the token/gist ID from Tabby's own Settings UI).
+7. **Install Tabby plugins** (`roles/tabby`) by deploying [`files/tabby/package.json`](files/tabby/package.json) into `~/Library/Application Support/tabby/plugins` and running `npm install` there (requires `node`, installed as part of step 1). Currently installs `terminus-cloud-settings-sync` ("Cloud sync settings" — syncs Tabby's config to a GitHub Gist and other cloud backends; configure the token/gist ID from Tabby's own Settings UI). Add more plugins by editing that `package.json`.
 
 ## Requirements
 
@@ -171,6 +171,7 @@ roles/
   startup/tasks/main.yml          Login items management
   tabby/tasks/main.yml            Installs Tabby plugins via npm
 files/karabiner/                 Karabiner-Elements JSON rule files
+files/tabby/package.json         Declares Tabby plugins to install (npm dependencies)
 ```
 
 ## Notes
