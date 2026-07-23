@@ -36,6 +36,7 @@ Running the playbook will:
    - Accessibility zoom with Ctrl + scroll
    - Use F1–F12 as standard function keys
 6. **Deploy Karabiner-Elements complex modifications** (`roles/karabiner`) by copying JSON rule files from `files/karabiner/` into `~/.config/karabiner/assets/complex_modifications/`.
+7. **Install Tabby plugins** (`roles/tabby`) via `npm install --prefix`, into `~/Library/Application Support/tabby/plugins` (requires `node`, installed as part of step 1). Currently installs `terminus-sync-config` (syncs Tabby's config to a GitHub/Gitee Gist — configure the token/gist ID from Tabby's own Settings UI).
 
 ## Requirements
 
@@ -82,6 +83,9 @@ ansible-playbook main.yml --tags appstore
 
 # Only login items
 ansible-playbook main.yml --tags startup
+
+# Only Tabby plugins
+ansible-playbook main.yml --tags tabby
 ```
 
 ## Configuration
@@ -110,7 +114,7 @@ startup_apps:
 
 | Category | Packages |
 |---|---|
-| Development | `gh`, `git`, `python@3.14` |
+| Development | `gh`, `git`, `node`, `python@3.14` |
 | Cloud / DevOps | `azure-cli`, `oci-cli` |
 | Networking | `iperf3`, `rustscan`, `mtr`, `nmap`, `speedtest` (via `teamookla/speedtest` tap), `swaks`, `tcping`, `wget` |
 | System utilities | `htop`, `mas` |
@@ -165,6 +169,7 @@ roles/
   shell/tasks/main.yml            Starship + Zsh setup
   shell/files/starship.toml       Starship prompt configuration
   startup/tasks/main.yml          Login items management
+  tabby/tasks/main.yml            Installs Tabby plugins via npm
 files/karabiner/                 Karabiner-Elements JSON rule files
 ```
 

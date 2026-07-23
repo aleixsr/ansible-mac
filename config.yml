@@ -2,6 +2,7 @@
 packagesdevelopment:
   - gh
   - git
+  - node
   - python@3.14
 
 packagesclouddevops:

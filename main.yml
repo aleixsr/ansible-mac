@@ -175,3 +175,11 @@
       register: login_item_result
       changed_when: "'ADDED' in login_item_result.stdout"
       tags: startup
+
+# NOU ROLE: Tabby plugins (requereix node/npm, instal·lats a la play anterior)
+- name: Install Tabby plugins
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  roles:
+    - tabby

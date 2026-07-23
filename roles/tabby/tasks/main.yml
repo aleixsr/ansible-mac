@@ -1,0 +1,15 @@
+---
+- name: Ensure Tabby plugins directory exists
+  file:
+    path: "{{ ansible_facts['env']['HOME'] }}/Library/Application Support/tabby/plugins"
+    state: directory
+    mode: "0755"
+  tags: tabby
+
+- name: Install Tabby Gist sync plugin (terminus-sync-config)
+  command: >
+    npm install --prefix "{{ ansible_facts['env']['HOME'] }}/Library/Application Support/tabby/plugins"
+    terminus-sync-config --no-save --legacy-peer-deps
+  args:
+    creates: "{{ ansible_facts['env']['HOME'] }}/Library/Application Support/tabby/plugins/node_modules/terminus-sync-config"
+  tags: tabby
